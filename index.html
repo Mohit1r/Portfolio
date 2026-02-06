@@ -1171,29 +1171,30 @@
 
     <script>
         // Download CV function
-        function downloadCV() {
-            // Show notification toast
-            const toast = document.getElementById('downloadToast');
-            toast.classList.add('show');
-            
-            // Send notification to your email (via a simple tracking pixel or API)
-            // In a real implementation, you'd call your backend API here
-            sendDownloadNotification();
-            
-            // Create and trigger download
-            // Note: Replace 'MohitKumar_Resume.pdf' with your actual CV file path
-            const link = document.createElement('a');
-            link.href = 'MohitResume.pdf'; // Make sure to place your CV file in the same directory
-            link.download = 'MohitResume.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Hide toast after 4 seconds
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 4000);
-        }
+      function downloadCV() {
+    // Show notification toast
+    const toast = document.getElementById('downloadToast');
+    toast.classList.add('show');
+    
+    // Send notification to your email (via a simple tracking pixel or API)
+    // In a real implementation, you'd call your backend API here
+    sendDownloadNotification();
+    
+    // Create and trigger download from GitHub repo
+    const link = document.createElement('a');
+    // Replace 'yourusername' and 'yourrepo' with your actual GitHub username and repository name
+    link.href = 'https://raw.githubusercontent.com/yourusername/yourrepo/main/mohitResume.pdf';
+    link.download = 'mohitResume.pdf';
+    link.target = '_blank'; // Open in new tab as fallback
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Hide toast after 4 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 4000);
+}
         
         // Function to send notification (can be implemented with your backend)
         function sendDownloadNotification() {
