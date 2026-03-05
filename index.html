@@ -1,1314 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOHIT KUMAR // JAVA SOFTWARE ENGINEER</title>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --yellow: #FFEB3B;
-            --cyan: #00BCD4;
-            --magenta: #E91E63;
-            --black: #000000;
-            --white: #FFFFFF;
-            --gray: #212121;
-            --light-gray: #BDBDBD;
-            --blue: #2196F3;
-            --purple: #6A1B9A;
-            --steel-blue: #546E7A;
-        }
-
-        body {
-            font-family: 'IBM Plex Mono', monospace;
-            background: var(--white);
-            color: var(--black);
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        /* Utility */
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Header */
-        header {
-            background: var(--black);
-            color: var(--white);
-            padding: 2rem 0;
-            border-bottom: 8px solid var(--yellow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: 0.05em;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
-
-        .nav-menu a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .nav-menu a:hover {
-            color: var(--yellow);
-        }
-
-        .nav-menu a::before {
-            content: '//';
-            margin-right: 0.5rem;
-            color: var(--cyan);
-        }
-
-        /* Hero */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: var(--white);
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: 'JAVA';
-            position: absolute;
-            top: 10%;
-            right: -5%;
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 25rem;
-            color: var(--black);
-            opacity: 0.02;
-            z-index: 0;
-            transform: rotate(-15deg);
-        }
-
-        .hero-grid {
-            position: relative;
-            z-index: 1;
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: clamp(3rem, 8vw, 7rem);
-            line-height: 0.9;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-text h1 .highlight {
-            display: block;
-            background: var(--yellow);
-            padding: 0.2rem 0.5rem;
-            display: inline-block;
-            transform: skew(-5deg);
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            letter-spacing: 0.2em;
-            color: var(--magenta);
-        }
-
-        .hero-description {
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            border-left: 4px solid var(--cyan);
-            padding-left: 1.5rem;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1.2rem 2.5rem;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            border: 3px solid var(--black);
-            background: var(--white);
-            color: var(--black);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--black);
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-
-        .btn:hover::before {
-            left: 0;
-        }
-
-        .btn:hover {
-            color: var(--white);
-        }
-
-        .btn-primary {
-            background: var(--black);
-            color: var(--white);
-            border-color: var(--black);
-        }
-
-        .btn-primary::before {
-            background: var(--yellow);
-        }
-
-        .btn-primary:hover {
-            color: var(--black);
-            border-color: var(--yellow);
-        }
-
-        .hero-box {
-            background: var(--black);
-            color: var(--white);
-            padding: 3rem;
-            border: 8px solid var(--yellow);
-            position: relative;
-        }
-
-        .hero-box::after {
-            content: '';
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 100%;
-            height: 100%;
-            border: 8px solid var(--cyan);
-            z-index: -1;
-        }
-
-        .stat-item {
-            margin-bottom: 2rem;
-        }
-
-        .stat-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .stat-number {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 3.5rem;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-            color: var(--yellow);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--light-gray);
-        }
-
-        /* Section Base */
-        .section {
-            padding: 8rem 0;
-            position: relative;
-        }
-
-        .section-header {
-            margin-bottom: 5rem;
-            position: relative;
-        }
-
-        .section-number {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 8rem;
-            color: var(--black);
-            opacity: 0.05;
-            line-height: 1;
-            margin-bottom: -3rem;
-        }
-
-        .section-title {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 5rem);
-            text-transform: uppercase;
-            line-height: 1;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
-
-        /* Experience */
-        #experience {
-            background: var(--gray);
-            color: var(--white);
-        }
-
-        #experience .section-number {
-            color: var(--white);
-        }
-
-        .timeline {
-            position: relative;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(180deg, var(--yellow), var(--cyan), var(--magenta));
-        }
-
-        .timeline-entry {
-            margin-bottom: 4rem;
-            padding-left: 4rem;
-            position: relative;
-            border-left: 4px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-entry:hover {
-            border-left-color: var(--yellow);
-            transform: translateX(10px);
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -14px;
-            top: 0;
-            width: 24px;
-            height: 24px;
-            background: var(--black);
-            border: 4px solid var(--yellow);
-        }
-
-        .timeline-date {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 0.85rem;
-            color: var(--yellow);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-entry h3 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .timeline-company {
-            font-size: 1rem;
-            color: var(--cyan);
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .timeline-entry ul {
-            list-style: none;
-        }
-
-        .timeline-entry li {
-            padding-left: 2rem;
-            margin-bottom: 1rem;
-            position: relative;
-            color: var(--light-gray);
-        }
-
-        .timeline-entry li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--magenta);
-            font-weight: 700;
-        }
-
-        /* NEW SKILLS SECTION DESIGN */
-        #skills {
-            background: var(--steel-blue);
-            color: var(--white);
-        }
-
-        #skills .section-number {
-            color: var(--white);
-        }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 4rem;
-        }
-
-        .skill-category {
-            position: relative;
-        }
-
-        .skill-category-header {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 4px solid var(--yellow);
-        }
-
-        .skill-icon {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 4rem;
-            color: var(--yellow);
-            opacity: 0.3;
-            line-height: 1;
-        }
-
-        .skill-category h3 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 2rem;
-            text-transform: uppercase;
-            color: var(--white);
-            letter-spacing: -0.02em;
-        }
-
-        .skill-tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .skill-tag {
-            padding: 1rem 1.5rem;
-            background: transparent;
-            border: 3px solid var(--white);
-            color: var(--white);
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-tag::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-
-        .skill-category:nth-child(1) .skill-tag {
-            border-color: var(--yellow);
-        }
-
-        .skill-category:nth-child(1) .skill-tag::before {
-            background: var(--yellow);
-        }
-
-        .skill-category:nth-child(1) .skill-tag:hover {
-            color: var(--black);
-            border-color: var(--yellow);
-        }
-
-        .skill-category:nth-child(2) .skill-tag {
-            border-color: var(--cyan);
-        }
-
-        .skill-category:nth-child(2) .skill-tag::before {
-            background: var(--cyan);
-        }
-
-        .skill-category:nth-child(2) .skill-tag:hover {
-            color: var(--black);
-            border-color: var(--cyan);
-        }
-
-        .skill-category:nth-child(3) .skill-tag {
-            border-color: var(--magenta);
-        }
-
-        .skill-category:nth-child(3) .skill-tag::before {
-            background: var(--magenta);
-        }
-
-        .skill-category:nth-child(3) .skill-tag:hover {
-            color: var(--black);
-            border-color: var(--magenta);
-        }
-
-        .skill-category:nth-child(4) .skill-tag {
-            border-color: var(--yellow);
-        }
-
-        .skill-category:nth-child(4) .skill-tag::before {
-            background: var(--yellow);
-        }
-
-        .skill-category:nth-child(4) .skill-tag:hover {
-            color: var(--black);
-            border-color: var(--yellow);
-        }
-
-        .skill-tag:hover::before {
-            left: 0;
-        }
-
-        /* Projects */
-        #projects {
-            background: var(--white);
-        }
-
-        .projects-list {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
-
-        .project {
-            background: var(--white);
-            border: 4px solid var(--black);
-            padding: 3rem;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .project:nth-child(1) {
-            border-color: var(--yellow);
-        }
-
-        .project:nth-child(2) {
-            border-color: var(--cyan);
-        }
-
-        .project:nth-child(3) {
-            border-color: var(--magenta);
-        }
-
-        .project:hover {
-            transform: translate(-5px, -5px);
-        }
-
-        .project:nth-child(1):hover {
-            box-shadow: 10px 10px 0 var(--yellow);
-        }
-
-        .project:nth-child(2):hover {
-            box-shadow: 10px 10px 0 var(--cyan);
-        }
-
-        .project:nth-child(3):hover {
-            box-shadow: 10px 10px 0 var(--magenta);
-        }
-
-        .project-number {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1rem;
-            color: var(--magenta);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
-
-        .project h3 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .project-desc {
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            color: var(--gray);
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .tech-item {
-            padding: 0.6rem 1.2rem;
-            background: var(--black);
-            color: var(--white);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border: 2px solid var(--black);
-            transition: all 0.3s ease;
-        }
-
-        .tech-item:hover {
-            background: var(--white);
-            color: var(--black);
-            transform: translateY(-3px);
-        }
-
-        /* CV Download Section */
-        #download-cv {
-            background: var(--cyan);
-            color: var(--black);
-        }
-
-        #download-cv .section-number {
-            color: var(--black);
-        }
-
-        .download-container {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .download-box {
-            background: var(--white);
-            padding: 4rem;
-            border: 8px solid var(--black);
-            position: relative;
-        }
-
-        .download-box::after {
-            content: '';
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 100%;
-            height: 100%;
-            border: 8px solid var(--magenta);
-            z-index: -1;
-        }
-
-        .download-icon {
-            font-size: 5rem;
-            margin-bottom: 2rem;
-        }
-
-        .download-box h3 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-        }
-
-        .download-box p {
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-        }
-
-        .download-info {
-            background: var(--yellow);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border: 2px solid var(--black);
-        }
-
-        .download-info p {
-            margin: 0;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        /* Notification Toast */
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--black);
-            color: var(--white);
-            padding: 1.5rem 2rem;
-            border: 4px solid var(--yellow);
-            z-index: 1000;
-            transform: translateX(500px);
-            transition: transform 0.3s ease;
-            box-shadow: -10px 10px 0 var(--magenta);
-        }
-
-        .toast.show {
-            transform: translateX(0);
-        }
-
-        .toast-content {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .toast-icon {
-            font-size: 2rem;
-        }
-
-        .toast-text h4 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1rem;
-            text-transform: uppercase;
-            margin-bottom: 0.3rem;
-        }
-
-        .toast-text p {
-            font-size: 0.85rem;
-            color: var(--light-gray);
-            margin: 0;
-        }
-
-        /* Contact */
-        #contact {
-            background: var(--gray);
-            color: var(--white);
-            border-top: 8px solid var(--yellow);
-        }
-
-        #contact .section-number {
-            color: var(--white);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-        }
-
-        .contact-box {
-            background: var(--white);
-            color: var(--black);
-            padding: 3rem;
-            border: 4px solid var(--yellow);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .contact-box:hover {
-            transform: translate(-5px, -5px);
-            box-shadow: 10px 10px 0 var(--yellow);
-        }
-
-        .contact-label {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--magenta);
-            margin-bottom: 1rem;
-        }
-
-        .contact-value {
-            font-size: 1.2rem;
-            font-weight: 700;
-            word-break: break-word;
-        }
-
-        .contact-value a {
-            color: var(--black);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-value a:hover {
-            color: var(--cyan);
-        }
-
-        .cta-box {
-            grid-column: 1 / -1;
-            background: var(--yellow);
-            color: var(--black);
-            padding: 4rem;
-            text-align: center;
-            border: 4px solid var(--yellow);
-        }
-
-        .cta-box h3 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 3rem;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            line-height: 1.1;
-        }
-
-        .cta-box p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--black);
-            color: var(--light-gray);
-            padding: 3rem 0;
-            text-align: center;
-            border-top: 4px solid var(--cyan);
-        }
-
-        footer p {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
-
-        .footer-credit {
-            margin-top: 1rem;
-            font-size: 0.75rem;
-            color: var(--gray);
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-
-            .hero-text h1 {
-                font-size: 3rem;
-            }
-
-            .section {
-                padding: 5rem 0;
-            }
-
-            .timeline-entry {
-                padding-left: 2.5rem;
-            }
-
-            .section-number {
-                font-size: 5rem;
-            }
-
-            .container {
-                padding: 0 1.5rem;
-            }
-
-            .toast {
-                right: 1rem;
-                left: 1rem;
-            }
-
-            .skills-container {
-                gap: 3rem;
-            }
-        }
-
-        /* Animations */
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .timeline-entry {
-            animation: slideIn 0.8s ease-out;
-        }
-
-        .timeline-entry:nth-child(1) { animation-delay: 0.1s; }
-        .timeline-entry:nth-child(2) { animation-delay: 0.2s; }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .skill-category {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .skill-category:nth-child(1) { animation-delay: 0.1s; }
-        .skill-category:nth-child(2) { animation-delay: 0.2s; }
-        .skill-category:nth-child(3) { animation-delay: 0.3s; }
-        .skill-category:nth-child(4) { animation-delay: 0.4s; }
-
-        /* Glitch effect for title */
-        @keyframes glitch {
-            0% {
-                text-shadow: 2px 2px var(--cyan), -2px -2px var(--magenta);
-            }
-            25% {
-                text-shadow: -2px 2px var(--yellow), 2px -2px var(--cyan);
-            }
-            50% {
-                text-shadow: 2px -2px var(--magenta), -2px 2px var(--yellow);
-            }
-            75% {
-                text-shadow: -2px -2px var(--cyan), 2px 2px var(--magenta);
-            }
-            100% {
-                text-shadow: 2px 2px var(--cyan), -2px -2px var(--magenta);
-            }
-        }
-
-        .hero-text h1:hover {
-            animation: glitch 0.3s ease-in-out;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mohit@portfolio:~$</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Fraunces:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f1117;
+  --panel: #151720;
+  --border: #1e2130;
+  --text: #cdd6f4;
+  --dim: #6c7086;
+  --green: #a6e3a1;
+  --blue: #89b4fa;
+  --yellow: #f9e2af;
+  --red: #f38ba8;
+  --teal: #94e2d5;
+  --mauve: #cba6f7;
+  --peach: #fab387;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.window {
+  max-width: 860px;
+  margin: 40px auto;
+  padding: 0 20px 60px;
+}
+
+.titlebar {
+  background: #1e2130;
+  border-radius: 10px 10px 0 0;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+
+.dots { display: flex; gap: 7px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot-r { background: #ff5f57; }
+.dot-y { background: #ffbd2e; }
+.dot-g { background: #28c840; }
+
+.title-text { flex: 1; text-align: center; color: var(--dim); font-size: 12px; }
+
+.tabs {
+  display: flex;
+  background: #151720;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.tab {
+  padding: 10px 20px;
+  font-size: 12px;
+  color: var(--dim);
+  cursor: pointer;
+  border-right: 1px solid var(--border);
+  transition: all 0.15s;
+  white-space: nowrap;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-bottom: 2px solid transparent;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.tab:hover { color: var(--text); background: #1a1d2e; }
+.tab.active { color: var(--green); background: var(--bg); border-bottom-color: var(--green); }
+
+.terminal {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: none;
+  padding: 32px 36px;
+  min-height: 500px;
+}
+
+.section { display: none; }
+.section.active { display: block; }
+
+.prompt {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.prompt-user { color: var(--mauve); }
+.prompt-at { color: var(--dim); }
+.prompt-host { color: var(--blue); }
+.prompt-sep { color: var(--dim); }
+.prompt-path { color: var(--green); }
+.prompt-dollar { color: var(--dim); margin-left: 4px; margin-right: 8px; }
+.prompt-cmd { color: var(--yellow); }
+
+.output { margin-bottom: 28px; }
+
+.comment { color: var(--dim); font-style: italic; margin-bottom: 16px; }
+.comment::before { content: '# '; }
+
+.big-name {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: clamp(42px, 8vw, 72px);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--text);
+  margin-bottom: 4px;
+  letter-spacing: -1px;
+}
+.big-name span { color: var(--green); }
+
+.role-line { font-size: 13px; color: var(--blue); margin-bottom: 20px; }
+.role-line::before { content: '→ '; color: var(--dim); }
+
+.bio { color: #a6adc8; max-width: 500px; line-height: 1.8; margin-bottom: 28px; font-size: 13px; }
+
+.kv-list { margin-bottom: 28px; }
+.kv { display: flex; gap: 0; margin-bottom: 6px; align-items: baseline; }
+.kv-key { color: var(--mauve); min-width: 120px; }
+.kv-eq { color: var(--dim); margin: 0 8px; }
+.kv-val { color: var(--yellow); }
+.kv-val a { color: var(--yellow); text-decoration: none; }
+.kv-val a:hover { color: var(--green); text-decoration: underline; }
+
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+
+.cmd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-decoration: none;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: transparent;
+}
+.cmd-btn-primary { border-color: var(--green); color: var(--green); }
+.cmd-btn-primary:hover { background: var(--green); color: var(--bg); }
+.cmd-btn-secondary { border-color: var(--border); color: var(--dim); }
+.cmd-btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
+
+.blink {
+  display: inline-block;
+  width: 8px; height: 14px;
+  background: var(--green);
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.exp-block { margin-bottom: 32px; }
+.exp-title-line { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+.exp-role { font-size: 14px; font-weight: 600; color: var(--text); }
+.exp-period { font-size: 11px; color: var(--dim); }
+.exp-company { color: var(--teal); font-size: 12px; margin-bottom: 10px; }
+.exp-company::before { content: '@ '; color: var(--dim); }
+.exp-points { list-style: none; padding: 0; }
+.exp-points li { color: #a6adc8; font-size: 12px; line-height: 1.7; padding-left: 16px; position: relative; margin-bottom: 3px; }
+.exp-points li::before { content: '▸'; position: absolute; left: 0; color: var(--green); font-size: 10px; top: 2px; }
+
+.divider { border: none; border-top: 1px dashed var(--border); margin: 24px 0; }
+
+.skill-block { margin-bottom: 20px; }
+.skill-category { color: var(--blue); font-size: 11px; margin-bottom: 8px; letter-spacing: 0.05em; }
+.skill-category::before { content: '['; color: var(--dim); }
+.skill-category::after { content: ']'; color: var(--dim); }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.stag { padding: 3px 10px; font-size: 11px; border: 1px solid; transition: all 0.12s; }
+.stag-java { border-color: #f38ba820; color: var(--red); }
+.stag-java:hover { background: #f38ba820; }
+.stag-cloud { border-color: #89b4fa20; color: var(--blue); }
+.stag-cloud:hover { background: #89b4fa20; }
+.stag-db { border-color: #f9e2af20; color: var(--yellow); }
+.stag-db:hover { background: #f9e2af20; }
+.stag-devops { border-color: #a6e3a120; color: var(--green); }
+.stag-devops:hover { background: #a6e3a120; }
+.stag-sec { border-color: #cba6f720; color: var(--mauve); }
+.stag-sec:hover { background: #cba6f720; }
+.stag-tools { border-color: #94e2d520; color: var(--teal); }
+.stag-tools:hover { background: #94e2d520; }
+
+.project-block { border: 1px solid var(--border); padding: 20px; margin-bottom: 16px; transition: border-color 0.2s; position: relative; }
+.project-block:hover { border-color: var(--teal); }
+.project-block::before { content: attr(data-num); position: absolute; top: -1px; right: 16px; background: var(--bg); padding: 0 6px; font-size: 10px; color: var(--dim); }
+.project-name { font-size: 14px; font-weight: 600; color: var(--teal); margin-bottom: 6px; }
+.project-desc { color: #a6adc8; font-size: 12px; line-height: 1.7; margin-bottom: 12px; }
+.project-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+.stack-chip { font-size: 10px; color: var(--peach); border: 1px solid #fab38720; padding: 2px 8px; }
+
+.contact-line { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+.contact-line:last-child { border-bottom: none; }
+.c-icon { color: var(--green); width: 20px; text-align: center; }
+.c-label { color: var(--dim); width: 80px; }
+.c-val a { color: var(--yellow); text-decoration: none; }
+.c-val a:hover { color: var(--green); }
+.c-val { color: var(--yellow); }
+
+.cert-line { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); align-items: baseline; }
+.cert-line:last-child { border-bottom: none; }
+.cert-badge { font-size: 10px; padding: 2px 8px; border: 1px solid var(--green); color: var(--green); white-space: nowrap; }
+.cert-name { color: var(--text); font-size: 12px; }
+.cert-detail { color: var(--dim); font-size: 11px; margin-top: 2px; }
+
+.statusbar {
+  background: var(--green);
+  color: var(--bg);
+  font-size: 11px;
+  padding: 4px 16px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0 0 6px 6px;
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.section.active > * { animation: fadeIn 0.3s ease both; }
+.section.active > *:nth-child(2) { animation-delay: 0.05s; }
+.section.active > *:nth-child(3) { animation-delay: 0.1s; }
+.section.active > *:nth-child(4) { animation-delay: 0.15s; }
+.section.active > *:nth-child(5) { animation-delay: 0.2s; }
+
+@media (max-width: 600px) {
+  .terminal { padding: 20px 18px; }
+  .window { margin: 0; padding: 0 0 40px; }
+  .titlebar { border-radius: 0; }
+  .kv-key { min-width: 90px; }
+}
+</style>
 </head>
 <body>
-    <!-- Notification Toast -->
-    <div class="toast" id="downloadToast">
-        <div class="toast-content">
-            <div class="toast-icon">✓</div>
-            <div class="toast-text">
-                <h4>CV Download Initiated</h4>
-                <p>Mohit has been notified of your download!</p>
-            </div>
+
+<div class="window">
+  <div class="titlebar">
+    <div class="dots">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+    </div>
+    <div class="title-text">mohit@portfolio: ~</div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="show('home', this)">~/home</button>
+    <button class="tab" onclick="show('experience', this)">~/experience</button>
+    <button class="tab" onclick="show('skills', this)">~/skills</button>
+    <button class="tab" onclick="show('projects', this)">~/projects</button>
+    <button class="tab" onclick="show('contact', this)">~/contact</button>
+  </div>
+
+  <div class="terminal">
+
+    <!-- HOME -->
+    <div class="section active" id="home">
+      <div class="prompt">
+        <span class="prompt-user">mohit</span><span class="prompt-at">@</span><span class="prompt-host">portfolio</span><span class="prompt-sep">:</span><span class="prompt-path">~</span><span class="prompt-dollar">$</span>
+        <span class="prompt-cmd">cat about.md</span>
+      </div>
+      <div class="output">
+        <div class="big-name">Mohit<br><span>Kumar</span></div>
+        <div class="role-line">Backend Software Engineer (Java)</div>
+        <p class="bio">5+ years building microservices, APIs and batch systems that handle enterprise-scale data.<br>Currently at Cognizant in Vilnius, Lithuania — deploying on Azure &amp; Kubernetes.</p>
+      </div>
+      <div class="output">
+        <div class="comment">metadata</div>
+        <div class="kv-list">
+          <div class="kv"><span class="kv-key">location</span><span class="kv-eq">=</span><span class="kv-val">Vilnius, Lithuania</span></div>
+          <div class="kv"><span class="kv-key">experience</span><span class="kv-eq">=</span><span class="kv-val">5+ years</span></div>
+          <div class="kv"><span class="kv-key">company</span><span class="kv-eq">=</span><span class="kv-val">Cognizant Technology Solutions</span></div>
+          <div class="kv"><span class="kv-key">stack</span><span class="kv-eq">=</span><span class="kv-val">Java · Spring Boot · Azure · Kubernetes</span></div>
+          <div class="kv"><span class="kv-key">cert</span><span class="kv-eq">=</span><span class="kv-val">AZ-900 (Microsoft Azure)</span></div>
+          <div class="kv"><span class="kv-key">linkedin</span><span class="kv-eq">=</span><span class="kv-val"><a href="https://linkedin.com/in/mohitkumar18" target="_blank">linkedin.com/in/mohitkumar18</a></span></div>
         </div>
+      </div>
+      <div class="actions">
+        <a href="mailto:Mohitkrkumar45@gmail.com" class="cmd-btn cmd-btn-primary">✉ get in touch</a>
+        <a href="Mohit_Kumar_CV.pdf" download="Mohit_Kumar_CV.pdf" class="cmd-btn cmd-btn-secondary">↓ download cv</a>
+        <a href="https://linkedin.com/in/mohitkumar18" target="_blank" class="cmd-btn cmd-btn-secondary">⇗ linkedin</a>
+      </div>
+      <div style="margin-top:32px; color: var(--dim); font-size: 12px;"><span class="prompt-dollar">$</span> <span class="blink"></span></div>
     </div>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">MK_DEV</div>
-                <nav>
-                    <ul class="nav-menu">
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#download-cv">Download CV</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
+    <!-- EXPERIENCE -->
+    <div class="section" id="experience">
+      <div class="prompt">
+        <span class="prompt-user">mohit</span><span class="prompt-at">@</span><span class="prompt-host">portfolio</span><span class="prompt-sep">:</span><span class="prompt-path">~/experience</span><span class="prompt-dollar">$</span>
+        <span class="prompt-cmd">cat work_history.log</span>
+      </div>
+      <div class="exp-block">
+        <div class="exp-title-line"><span class="exp-role">Software Engineer</span><span class="exp-period">Jan 2024 – Present</span></div>
+        <div class="exp-company">Cognizant Technology Solutions · Vilnius, Lithuania</div>
+        <ul class="exp-points">
+          <li>Designed Java microservices for large-scale enterprise data workloads</li>
+          <li>Built REST APIs and backend services for internal and external systems</li>
+          <li>Deployed containerized services on Azure Kubernetes Service (AKS)</li>
+          <li>Implemented CI/CD pipelines via GitHub Actions</li>
+          <li>Improved observability with Datadog dashboards and structured logging</li>
+        </ul>
+      </div>
+      <hr class="divider">
+      <div class="exp-block">
+        <div class="exp-title-line"><span class="exp-role">Junior Software Engineer</span><span class="exp-period">Jul 2022 – Dec 2023</span></div>
+        <div class="exp-company">Cognizant Technology Solutions · Kolkata → Vilnius</div>
+        <ul class="exp-points">
+          <li>Built batch processing apps for large structured data file pipelines</li>
+          <li>Implemented async processing mechanisms to improve throughput</li>
+          <li>Contributed to on-premise → Azure cloud migration</li>
+          <li>Applied JVM tuning to optimize memory utilization</li>
+        </ul>
+      </div>
+      <hr class="divider">
+      <div class="exp-block">
+        <div class="exp-title-line"><span class="exp-role">Programmer Analyst Trainee</span><span class="exp-period">Jul 2021 – Jun 2022</span></div>
+        <div class="exp-company">Cognizant Technology Solutions · Kolkata, India</div>
+        <ul class="exp-points">
+          <li>Java backend development and Spring Boot fundamentals</li>
+          <li>Participated in code reviews and architectural discussions</li>
+        </ul>
+      </div>
+      <div style="color: var(--dim); font-size: 12px; margin-top: 16px;"><span class="prompt-dollar">$</span> <span class="blink"></span></div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section" id="skills">
+      <div class="prompt">
+        <span class="prompt-user">mohit</span><span class="prompt-at">@</span><span class="prompt-host">portfolio</span><span class="prompt-sep">:</span><span class="prompt-path">~/skills</span><span class="prompt-dollar">$</span>
+        <span class="prompt-cmd">ls -la skills/</span>
+      </div>
+      <div class="skill-block">
+        <div class="skill-category">languages &amp; backend</div>
+        <div class="skill-tags">
+          <span class="stag stag-java">Java</span><span class="stag stag-java">Spring Boot</span><span class="stag stag-java">Spring Security</span><span class="stag stag-java">Spring Batch</span><span class="stag stag-java">REST APIs</span><span class="stag stag-java">GraphQL</span><span class="stag stag-java">SOAP</span><span class="stag stag-java">Microservices</span>
         </div>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-text">
-                    <h1>
-                        MOHIT<br>
-                        <span class="highlight">KUMAR</span>
-                    </h1>
-                    <div class="hero-subtitle">// JAVA SOFTWARE ENGINEER</div>
-                    <p class="hero-description">
-                        Building robust, scalable backend systems with 4+ years of hands-on experience. 
-                        Specialized in microservices architecture, cloud-native applications on Azure, 
-                        and enterprise system integration. Expert in Spring Boot, Docker, Kubernetes, 
-                        and modern DevOps practices.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="#contact" class="btn btn-primary">HIRE ME</a>
-                        <a href="#projects" class="btn">VIEW WORK</a>
-                    </div>
-                </div>
-                <div class="hero-box">
-                    <div class="stat-item">
-                        <div class="stat-number">4+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">20+</div>
-                        <div class="stat-label">Technologies</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Commitment</div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-category">cloud &amp; infrastructure</div>
+        <div class="skill-tags">
+          <span class="stag stag-cloud">Microsoft Azure</span><span class="stag stag-cloud">Azure App Service</span><span class="stag stag-cloud">AKS</span><span class="stag stag-cloud">Docker</span><span class="stag stag-cloud">Kubernetes</span>
         </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-number">01</div>
-                <h2 class="section-title">EXPERIENCE</h2>
-                <div class="section-subtitle">// CAREER TIMELINE</div>
-            </div>
-            <div class="timeline">
-                <div class="timeline-entry">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">JAN 2024 – PRESENT</div>
-                    <h3>Software Engineer</h3>
-                    <div class="timeline-company">Cognizant Technology Solutions • Vilnius, Lithuania</div>
-                    <ul>
-                        <li>Architecting enterprise-grade Java Spring Boot microservices for scalable backend systems</li>
-                        <li>Building production-ready RESTful APIs serving internal and external clients</li>
-                        <li>Deploying containerized applications using Docker and Azure Kubernetes Service (AKS)</li>
-                        <li>Implementing comprehensive CI/CD pipelines with GitHub Actions and Maven</li>
-                        <li>Securing applications using Spring Security, OAuth2, and JWT authentication</li>
-                        <li>Monitoring production systems with Datadog and Kibana for optimal performance</li>
-                        <li>Collaborating in Agile environments using Scrum and Kanban methodologies</li>
-                    </ul>
-                </div>
-                <div class="timeline-entry">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">JULY 2021 – JAN 2024</div>
-                    <h3>Junior Software Engineer</h3>
-                    <div class="timeline-company">Cognizant Technology Solutions • Vilnius, Lithuania</div>
-                    <ul>
-                        <li>Developed backend components using Java and Spring Boot framework</li>
-                        <li>Built and integrated REST APIs with enterprise backend services</li>
-                        <li>Created batch and middleware applications for large-scale data processing</li>
-                        <li>Supported cloud migration initiatives and containerization projects</li>
-                        <li>Maintained code quality through unit testing and peer code reviews</li>
-                        <li>Documented technical solutions using JIRA and Confluence</li>
-                    </ul>
-                </div>
-            </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-category">databases &amp; messaging</div>
+        <div class="skill-tags">
+          <span class="stag stag-db">PostgreSQL</span><span class="stag stag-db">SQL Server</span><span class="stag stag-db">IBM DB2</span><span class="stag stag-db">MySQL</span><span class="stag stag-db">Azure Service Bus</span>
         </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-number">02</div>
-                <h2 class="section-title">SKILLS</h2>
-                <div class="section-subtitle">// TECHNICAL ARSENAL</div>
-            </div>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-icon">01</div>
-                        <h3>Backend & Frameworks</h3>
-                    </div>
-                    <div class="skill-tags-container">
-                        <div class="skill-tag">Java 21</div>
-                        <div class="skill-tag">JavaScript</div>
-                        <div class="skill-tag">Spring Boot</div>
-                        <div class="skill-tag">Spring WebFlux</div>
-                        <div class="skill-tag">Spring MVC</div>
-                        <div class="skill-tag">Spring Batch</div>
-                        <div class="skill-tag">Spring Security</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-icon">02</div>
-                        <h3>Cloud & DevOps</h3>
-                    </div>
-                    <div class="skill-tags-container">
-                        <div class="skill-tag">Microsoft Azure</div>
-                        <div class="skill-tag">Docker</div>
-                        <div class="skill-tag">Kubernetes</div>
-                        <div class="skill-tag">Azure AKS</div>
-                        <div class="skill-tag">GitHub Actions</div>
-                        <div class="skill-tag">CI/CD</div>
-                        <div class="skill-tag">Maven</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-icon">03</div>
-                        <h3>Data & APIs</h3>
-                    </div>
-                    <div class="skill-tags-container">
-                        <div class="skill-tag">PostgreSQL</div>
-                        <div class="skill-tag">MySQL</div>
-                        <div class="skill-tag">SQL Server</div>
-                        <div class="skill-tag">IBM DB2</div>
-                        <div class="skill-tag">JPA/Hibernate</div>
-                        <div class="skill-tag">REST API</div>
-                        <div class="skill-tag">GraphQL</div>
-                        <div class="skill-tag">SOAP</div>
-                        <div class="skill-tag">Azure Service Bus</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-icon">04</div>
-                        <h3>Security & Tools</h3>
-                    </div>
-                    <div class="skill-tags-container">
-                        <div class="skill-tag">OAuth2</div>
-                        <div class="skill-tag">JWT</div>
-                        <div class="skill-tag">Azure AD</div>
-                        <div class="skill-tag">Git & GitHub</div>
-                        <div class="skill-tag">Datadog</div>
-                        <div class="skill-tag">Kibana</div>
-                        <div class="skill-tag">IntelliJ IDEA</div>
-                        <div class="skill-tag">Jira</div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-category">devops &amp; observability</div>
+        <div class="skill-tags">
+          <span class="stag stag-devops">GitHub Actions</span><span class="stag stag-devops">CI/CD</span><span class="stag stag-devops">Datadog</span><span class="stag stag-devops">Git</span><span class="stag stag-devops">Linux</span>
         </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-number">03</div>
-                <h2 class="section-title">PROJECTS</h2>
-                <div class="section-subtitle">// FEATURED WORK</div>
-            </div>
-            <div class="projects-list">
-                <div class="project">
-                    <div class="project-number">[PROJECT_001]</div>
-                    <h3>Customer Master Data Management</h3>
-                    <p class="project-desc">
-                        Architected and implemented comprehensive backend services for managing customer master 
-                        data across banking and insurance sectors. Developed RESTful APIs enabling seamless 
-                        integration with downstream applications while maintaining high data accuracy and 
-                        consistency. Implemented robust data validation, error handling, and automated 
-                        synchronization mechanisms to ensure fault-tolerant operations.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-item">Java 17</span>
-                        <span class="tech-item">Spring Boot</span>
-                        <span class="tech-item">Spring Security</span>
-                        <span class="tech-item">PostgreSQL</span>
-                        <span class="tech-item">Azure Service Bus</span>
-                        <span class="tech-item">REST API</span>
-                        <span class="tech-item">JPA/Hibernate</span>
-                        <span class="tech-item">Datadog</span>
-                    </div>
-                </div>
-                <div class="project">
-                    <div class="project-number">[PROJECT_002]</div>
-                    <h3>Automated Report Generation System</h3>
-                    <p class="project-desc">
-                        Designed and developed an enterprise-grade backend system to automate report generation 
-                        for internal teams and clients, significantly reducing manual effort. Built robust REST 
-                        APIs for triggering report creation and retrieving processed data. Processed large 
-                        datasets efficiently using Spring Batch with scheduled jobs. Optimized job performance, 
-                        implemented comprehensive error handling, and ensured timely delivery of reports.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-item">Java 17</span>
-                        <span class="tech-item">Spring Boot</span>
-                        <span class="tech-item">Spring Batch</span>
-                        <span class="tech-item">MySQL</span>
-                        <span class="tech-item">REST API</span>
-                        <span class="tech-item">Apache POI</span>
-                        <span class="tech-item">MS Graph API</span>
-                    </div>
-                </div>
-                <div class="project">
-                    <div class="project-number">[PROJECT_003]</div>
-                    <h3>Cloud Migration & Microservices Modernization</h3>
-                    <p class="project-desc">
-                        Led the migration of legacy on-premise microservices to Azure cloud infrastructure, 
-                        refactoring services for enhanced performance and scalability. Containerized applications 
-                        using Docker and orchestrated deployment on Azure Kubernetes Service. Refactored REST APIs 
-                        and integrated middleware services to maintain compatibility with downstream systems. 
-                        Implemented comprehensive monitoring using Datadog and Kibana.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-item">Java 17</span>
-                        <span class="tech-item">Docker</span>
-                        <span class="tech-item">Kubernetes</span>
-                        <span class="tech-item">Azure AKS</span>
-                        <span class="tech-item">REST API</span>
-                        <span class="tech-item">Datadog</span>
-                        <span class="tech-item">Kibana</span>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-category">security &amp; auth</div>
+        <div class="skill-tags">
+          <span class="stag stag-sec">OAuth2</span><span class="stag stag-sec">JWT</span><span class="stag stag-sec">Azure AD</span><span class="stag stag-sec">Spring Security</span>
         </div>
-    </section>
-
-    <!-- Download CV -->
-    <section id="download-cv" class="section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-number">04</div>
-                <h2 class="section-title">DOWNLOAD CV</h2>
-                <div class="section-subtitle">// GET MY FULL RESUME</div>
-            </div>
-            <div class="download-container">
-                <div class="download-box">
-                    <div class="download-icon">📄</div>
-                    <h3>Comprehensive Resume Available</h3>
-                    <p>
-                        Get detailed information about my experience, education, certifications, 
-                        and complete project portfolio in a professionally formatted PDF document.
-                    </p>
-                    <div class="download-info">
-                        <p>⚡ Download triggers automatic notification to Mohit</p>
-                    </div>
-                    <button onclick="downloadCV()" class="btn btn-primary">DOWNLOAD CV (PDF)</button>
-                </div>
-            </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-category">tools</div>
+        <div class="skill-tags">
+          <span class="stag stag-tools">IntelliJ IDEA</span><span class="stag stag-tools">VS Code</span><span class="stag stag-tools">Jira</span><span class="stag stag-tools">Confluence</span><span class="stag stag-tools">Bitbucket</span>
         </div>
-    </section>
+      </div>
+      <div style="color: var(--dim); font-size: 12px; margin-top: 16px;"><span class="prompt-dollar">$</span> <span class="blink"></span></div>
+    </div>
 
-    <!-- Contact -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-number">05</div>
-                <h2 class="section-title">CONTACT</h2>
-                <div class="section-subtitle">// GET IN TOUCH</div>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-box">
-                    <div class="contact-label">EMAIL</div>
-                    <div class="contact-value">
-                        <a href="/cdn-cgi/l/email-protection#a8e5c7c0c1dcc3dac3ddc5c9da9c9de8cfc5c9c1c486cbc7c5"><span class="__cf_email__" data-cfemail="bbf6d4d3d2cfd0c9d0ced6dac98f8efbdcd6dad2d795d8d4d6">[email&#160;protected]</span></a>
-                    </div>
-                </div>
-                <div class="contact-box">
-                    <div class="contact-label">PHONE (EU)</div>
-                    <div class="contact-value">
-                        <a href="tel:+37063153710">+370-63153710</a>
-                    </div>
-                </div>
-                <div class="contact-box">
-                    <div class="contact-label">PHONE (INDIA)</div>
-                    <div class="contact-value">
-                        <a href="tel:+918584996235">+91-8584996235</a>
-                    </div>
-                </div>
-                <div class="contact-box">
-                    <div class="contact-label">LINKEDIN</div>
-                    <div class="contact-value">
-                        <a href="https://linkedin.com/in/mohitkumar18" target="_blank">/in/mohitkumar18</a>
-                    </div>
-                </div>
-                <div class="cta-box">
-                    <h3>LET'S COLLABORATE ON YOUR NEXT PROJECT</h3>
-                    <p>Based in Vilnius, Lithuania • Available for opportunities worldwide</p>
-                    <a href="/cdn-cgi/l/email-protection#a5e8cacdccd1ced7ced0c8c4d79190e5c2c8c4ccc98bc6cac8" class="btn btn-primary">START A PROJECT</a>
-                </div>
-            </div>
+    <!-- PROJECTS -->
+    <div class="section" id="projects">
+      <div class="prompt">
+        <span class="prompt-user">mohit</span><span class="prompt-at">@</span><span class="prompt-host">portfolio</span><span class="prompt-sep">:</span><span class="prompt-path">~/projects</span><span class="prompt-dollar">$</span>
+        <span class="prompt-cmd">git log --oneline --all</span>
+      </div>
+      <div class="project-block" data-num="project/01">
+        <div class="project-name">Customer Master Data Management Platform</div>
+        <p class="project-desc">Backend platform managing customer master data across enterprise systems. Event-driven workflows via Azure Service Bus with validation, retry logic, and structured logging.</p>
+        <div class="project-stack">
+          <span class="stack-chip">Java</span><span class="stack-chip">Spring Boot</span><span class="stack-chip">JPA/Hibernate</span><span class="stack-chip">PostgreSQL</span><span class="stack-chip">MySQL</span><span class="stack-chip">Azure Service Bus</span>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 MOHIT KUMAR • ALL RIGHTS RESERVED</p>
-            <p class="footer-credit">DESIGNED WITH PRECISION • BUILT WITH PASSION</p>
+      </div>
+      <div class="project-block" data-num="project/02">
+        <div class="project-name">Automated Report Generation System</div>
+        <p class="project-desc">Backend app to automate report generation at scale. Spring Batch for large datasets, structured logging, and robust error handling.</p>
+        <div class="project-stack">
+          <span class="stack-chip">Java</span><span class="stack-chip">Spring Boot</span><span class="stack-chip">Spring Batch</span><span class="stack-chip">MySQL</span><span class="stack-chip">Apache POI</span>
         </div>
-    </footer>
+      </div>
+      <div class="project-block" data-num="project/03 · personal">
+        <div class="project-name">Async Document Processing System</div>
+        <p class="project-desc">Backend APIs for document upload and asynchronous processing. Background workers handle document parsing and transformation pipelines.</p>
+        <div class="project-stack">
+          <span class="stack-chip">Java</span><span class="stack-chip">Spring Boot</span><span class="stack-chip">REST APIs</span>
+        </div>
+      </div>
+      <div style="color: var(--dim); font-size: 12px; margin-top: 16px;"><span class="prompt-dollar">$</span> <span class="blink"></span></div>
+    </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Download CV function
-        function downloadCV() {
-            // Show notification toast
-            const toast = document.getElementById('downloadToast');
-            toast.classList.add('show');
-            
-            // Send notification
-            sendDownloadNotification();
-            
-            // Create and trigger download from GitHub repo
-            const link = document.createElement('a');
-            link.href = 'https://raw.githubusercontent.com/Mohit1r/Portfolio/main/MohitResume.pdf';
-            link.download = 'mohitResume.pdf';
-            link.target = '_blank';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Hide toast after 4 seconds
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 4000);
-        }
-        
-        // Function to send notification
-        function sendDownloadNotification() {
-            const notificationData = {
-                event: 'CV Downloaded',
-                timestamp: new Date().toISOString(),
-                userAgent: navigator.userAgent,
-                page: window.location.href
-            };
-            
-            console.log('Download notification sent:', notificationData);
-        }
+    <!-- CONTACT -->
+    <div class="section" id="contact">
+      <div class="prompt">
+        <span class="prompt-user">mohit</span><span class="prompt-at">@</span><span class="prompt-host">portfolio</span><span class="prompt-sep">:</span><span class="prompt-path">~/contact</span><span class="prompt-dollar">$</span>
+        <span class="prompt-cmd">cat contact.json</span>
+      </div>
+      <div class="output" style="margin-bottom:32px;">
+        <div class="contact-line"><span class="c-icon">✉</span><span class="c-label">email</span><span class="c-val"><a href="mailto:Mohitkrkumar45@gmail.com">Mohitkrkumar45@gmail.com</a></span></div>
+        <div class="contact-line"><span class="c-icon">☏</span><span class="c-label">phone</span><span class="c-val"><a href="tel:+37063153710">+370 631 53710</a></span></div>
+        <div class="contact-line"><span class="c-icon">⇗</span><span class="c-label">linkedin</span><span class="c-val"><a href="https://linkedin.com/in/mohitkumar18" target="_blank">linkedin.com/in/mohitkumar18</a></span></div>
+        <div class="contact-line"><span class="c-icon">◎</span><span class="c-label">location</span><span class="c-val">Vilnius, Lithuania</span></div>
+      </div>
+      <div class="comment">certifications &amp; education</div>
+      <div class="cert-line">
+        <span class="cert-badge">CERT</span>
+        <div><div class="cert-name">Microsoft Azure Fundamentals (AZ-900)</div><div class="cert-detail">Microsoft</div></div>
+      </div>
+      <div class="cert-line">
+        <span class="cert-badge">EDU</span>
+        <div><div class="cert-name">B.Tech — Computer Science &amp; Engineering</div><div class="cert-detail">Future Institute of Technology, Kolkata · 2018–2021</div></div>
+      </div>
+      <div class="cert-line">
+        <span class="cert-badge">EDU</span>
+        <div><div class="cert-name">Diploma — Computer Science &amp; Engineering</div><div class="cert-detail">JP Institute of Engineering and Technology, Meerut · 2014–2017</div></div>
+      </div>
+      <div style="margin-top: 28px;">
+        <a href="Mohit_Kumar_CV.pdf" download="Mohit_Kumar_CV.pdf" class="cmd-btn cmd-btn-primary">↓ download cv</a>
+      </div>
+      <div style="color: var(--dim); font-size: 12px; margin-top: 24px;"><span class="prompt-dollar">$</span> <span class="blink"></span></div>
+    </div>
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+  </div>
+
+  <div class="statusbar">
+    <span id="status-mode">NORMAL</span>
+    <span id="status-file">home</span>
+    <span>Java · Spring Boot · Azure · K8s</span>
+  </div>
+</div>
+
+<script>
+  function show(id, tab) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    tab.classList.add('active');
+    document.getElementById('status-file').textContent = id;
+  }
+
+  document.addEventListener('keydown', e => {
+    const tabs = document.querySelectorAll('.tab');
+    const active = document.querySelector('.tab.active');
+    const idx = [...tabs].indexOf(active);
+    if (e.key === 'ArrowRight' && idx < tabs.length - 1) tabs[idx+1].click();
+    if (e.key === 'ArrowLeft' && idx > 0) tabs[idx-1].click();
+  });
+</script>
+</body>
+</html>
